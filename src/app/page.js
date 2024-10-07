@@ -1,39 +1,17 @@
-`use server`;
-import React from 'react';
-
-import {
-  readFile,
-  writeFile,
-} from '../helpers/file-helpers';
-
-const DATABASE_PATH = '/src/database.json';
-
-/*
-`readFile` takes 1 argument:
-• the path to the file:
-
-readFile('/path/to/file');
-
-`writeFile` takes 2 arguments:
-• The path to the file
-• The new contents for the file
-
-writeFile(
-  '/path/to/file',
-  '{ "hello": "world" }'
-);
-*/
+import React from "react";
+import Hitcounter from "./components/Hitcounter";
+import Censored from "./components/Censored";
 
 function Home() {
-  let { hits } = JSON.parse(readFile(DATABASE_PATH));
-  hits += 1;
-  console.log(hits);
-  writeFile(DATABASE_PATH, JSON.stringify({hits}));
-
   return (
     <main>
       <h1>Welcome!</h1>
-      <p>You are visitor number {hits}.</p>
+      <p>
+        You are visitor number{" "}
+        <Censored>
+          <Hitcounter />
+        </Censored>
+      </p>
     </main>
   );
 }
