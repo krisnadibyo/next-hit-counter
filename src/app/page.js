@@ -2,6 +2,8 @@ import React from "react";
 import Hitcounter from "./components/Hitcounter";
 import Censored from "./components/Censored";
 
+export const dynamic = 'force-dynamic'; 
+
 function Home() {
   return (
     <main>
